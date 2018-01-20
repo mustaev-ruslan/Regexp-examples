@@ -41,7 +41,7 @@ public class RegexpHelperTests {
 
     @Test(dataProvider = "isMailData")
     public void testIsMail(String mail, boolean expected) {
-        final boolean actual = RegexpHelper.isEmail(mail);
+        final boolean actual = RegexpHelper.isMail(mail);
         assertEquals(actual, expected, "mail: " + mail);
     }
 }

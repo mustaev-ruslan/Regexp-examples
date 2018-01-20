@@ -3,7 +3,7 @@ package regexp;
 import java.util.regex.*;
 
 public class RegexpHelper {
-    public static boolean isEmail(String mail) {
+    public static boolean isMail(String mail) {
         if (mail == null || mail.isEmpty()) {
             return false;
         }
