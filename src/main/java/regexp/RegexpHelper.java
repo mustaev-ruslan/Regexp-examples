@@ -6,18 +6,15 @@ import java.util.regex.*;
 
 public class RegexpHelper {
 
-    private static Matcher mailMatcher(String text) {
-        Pattern p = Pattern.compile(
-                "[a-zA-Z]([.-]?[a-zA-Z0-9_]+)*@[a-zA-Z]([.-]?[a-zA-Z0-9_]+)*"
-        );
-        return p.matcher(text);
-    }
+    private static Pattern mailPattern = Pattern.compile(
+            "[a-zA-Z]([.-]?[a-zA-`Z0-9_]+)*@[a-zA-Z]([.-]?[a-zA-Z0-9_]+)*"
+    );
 
     public static boolean isMail(String mail) {
         if (mail == null || mail.isEmpty()) {
             return false;
         }
-        return mailMatcher(mail).matches();
+        return mailPattern.matcher(mail).matches();
     }
 
     public static Set<String> findUniqueMails(String text) {
@@ -25,7 +22,7 @@ public class RegexpHelper {
         if (text == null || text.isEmpty()) {
             return mailSet;
         }
-        Matcher m = mailMatcher(text);
+        Matcher m = mailPattern.matcher(text);
         while (m.find()) {
             mailSet.add(m.group());
         }
