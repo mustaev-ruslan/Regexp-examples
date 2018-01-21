@@ -6,26 +6,22 @@ import java.util.regex.*;
 
 public class RegexpHelper {
 
-    private static Pattern mailPattern = Pattern.compile(
-            "[a-zA-Z]([.-]?[a-zA-`Z0-9_]+)*@[a-zA-Z]([.-]?[a-zA-Z0-9_]+)*"
-    );
-
-    public static boolean isMail(String mail) {
-        if (mail == null || mail.isEmpty()) {
+    public static boolean isMatches(String text, Pattern pattern) {
+        if (text == null || text.isEmpty()) {
             return false;
         }
-        return mailPattern.matcher(mail).matches();
+        return pattern.matcher(text).matches();
     }
 
-    public static Set<String> findUniqueMails(String text) {
-        Set<String> mailSet = new HashSet<>();
+    public static Set<String> findUniqueMatches(String text, Pattern pattern) {
+        Set<String> matchesSet = new HashSet<>();
         if (text == null || text.isEmpty()) {
-            return mailSet;
+            return matchesSet;
         }
-        Matcher m = mailPattern.matcher(text);
+        Matcher m = pattern.matcher(text);
         while (m.find()) {
-            mailSet.add(m.group());
+            matchesSet.add(m.group());
         }
-        return mailSet;
+        return matchesSet;
     }
 }
