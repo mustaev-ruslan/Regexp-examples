@@ -51,6 +51,17 @@ public class RegexpHelperTests {
                 {"NAME_SURRNAME", "Иван Иванов-Петров", true},
                 {"NAME_SURRNAME", "Иван Иванов Иванович", false},
                 {"NAME_SURRNAME", "И И", false},
+                {"PAGE_ADDRESS", "http://site", true},
+                {"PAGE_ADDRESS", "http://site/", true},
+                {"PAGE_ADDRESS", "http://site/home", true},
+                {"PAGE_ADDRESS", "http://site/home/video", true},
+                {"PAGE_ADDRESS", "http://www.site.com/home/video/main.jsp", true},
+                {"PAGE_ADDRESS", "http://www.site.com/home/video/main.jsp/", false},
+                {"PAGE_ADDRESS", "www.site.com/home/video/main.jsp", false},
+                {"PAGE_ADDRESS", "main.jsp", false},
+                {"PAGE_ADDRESS", "ftp://www.site.com/home/video/main.jsp", false},
+                {"PAGE_ADDRESS", "https://www.site.com/home/video/main.jsp", true},
+
         };
     }
 

@@ -24,7 +24,7 @@ public class RegexpHelper {
         // разделены минимум одним пробелом
         strMap.put("NAME_SURRNAME", "[А-ЯЁ][а-яё]+(-[А-ЯЁ][а-яё]+)?\\s+[А-ЯЁ][а-яё]+(-[А-ЯЁ][а-яё]+)?");
         // Адрес веб-странички http://host/address
-        strMap.put("PAGE_ADDRESS", "");
+        strMap.put("PAGE_ADDRESS", "https?://[a-zA-Z0-9._-]+(/[a-zA-Z0-9_-]+)*((/[a-zA-Z0-9._-]+)|/)?");
         // Цифровые часы. 10:55
         strMap.put("DIGITAL_CLOCK", "");
         // IP-адрес в десятичном представлении. 127.0.0.1
