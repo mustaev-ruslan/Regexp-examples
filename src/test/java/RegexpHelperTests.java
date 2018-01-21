@@ -61,7 +61,13 @@ public class RegexpHelperTests {
                 {"PAGE_ADDRESS", "main.jsp", false},
                 {"PAGE_ADDRESS", "ftp://www.site.com/home/video/main.jsp", false},
                 {"PAGE_ADDRESS", "https://www.site.com/home/video/main.jsp", true},
-
+                {"DIGITAL_CLOCK", "00:00", true},
+                {"DIGITAL_CLOCK", "01:10", true},
+                {"DIGITAL_CLOCK", "23:59", true},
+                {"DIGITAL_CLOCK", "24:00", false},
+                {"DIGITAL_CLOCK", "00:60", false},
+                {"DIGITAL_CLOCK", "99:99", false},
+                {"DIGITAL_CLOCK", "19:30", true},
         };
     }
 

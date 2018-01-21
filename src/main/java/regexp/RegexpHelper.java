@@ -26,7 +26,7 @@ public class RegexpHelper {
         // Адрес веб-странички http://host/address
         strMap.put("PAGE_ADDRESS", "https?://[a-zA-Z0-9._-]+(/[a-zA-Z0-9_-]+)*((/[a-zA-Z0-9._-]+)|/)?");
         // Цифровые часы. 10:55
-        strMap.put("DIGITAL_CLOCK", "");
+        strMap.put("DIGITAL_CLOCK", "([01][0-9]|[2][0-3]):([0-5][0-9])");
         // IP-адрес в десятичном представлении. 127.0.0.1
         strMap.put("IP", "");
         // Жадные круглые скобки. Возвращает любые скобочные выражения.
