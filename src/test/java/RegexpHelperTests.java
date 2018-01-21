@@ -45,13 +45,19 @@ public class RegexpHelperTests {
                 {"MAIL", "a@a.ru", true},
                 {"MAIL", "a.b@a", true},
                 {"MAIL", "mail______aaa@a.ru.rt", true},
+                {"NAME_SURRNAME", "Иван    Иванов", true},
+                {"NAME_SURRNAME", "Иван", false},
+                {"NAME_SURRNAME", "Иванов", false},
+                {"NAME_SURRNAME", "Иван Иванов-Петров", true},
+                {"NAME_SURRNAME", "Иван Иванов Иванович", false},
+                {"NAME_SURRNAME", "И И", false},
         };
     }
 
     @Test(dataProvider = "isMatchesData")
     public void testIsMatch(String patternName, String text, boolean expected) {
         final boolean actual = RegexpHelper.isMatches(text, RegexpHelper.getPattern(patternName));
-        assertEquals(actual, expected, "mail: " + text);
+        assertEquals(actual, expected, "text: " + text);
     }
 
     @DataProvider
@@ -72,6 +78,9 @@ public class RegexpHelperTests {
                 {"MAIL", "This is doubling of any mails: hello@my, hello@my, hello@my, no,no, adid@b.r, aga#jl, afa@no, afa@no," +
                         " ha@, @ga, no@no.no.n.ru, hello@my",
                         Set("hello@my", "adid@b.r", "afa@no", "no@no.no.n.ru", "hello@my")
+                },
+                {"NAME_SURRNAME", "Иванов Иван Иванович, разрешите должить. Пётр    Петров-Водкин прибыл! А Н Р",
+                        Set("Иванов Иван", "Пётр    Петров-Водкин")
                 },
         };
     }

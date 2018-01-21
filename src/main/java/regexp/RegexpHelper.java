@@ -22,7 +22,7 @@ public class RegexpHelper {
         strMap.put("MAIL", "[a-zA-Z]([.-]?[a-zA-`Z0-9_]+)*@[a-zA-Z]([.-]?[a-zA-Z0-9_]+)*");
         // То что может быть именем и фамилией, начинаются с большой буквы, не содержат небуквенных символов,
         // разделены минимум одним пробелом
-        strMap.put("NAME_SURRNAME", "");
+        strMap.put("NAME_SURRNAME", "[А-ЯЁ][а-яё]+(-[А-ЯЁ][а-яё]+)?\\s+[А-ЯЁ][а-яё]+(-[А-ЯЁ][а-яё]+)?");
         // Адрес веб-странички http://host/address
         strMap.put("PAGE_ADDRESS", "");
         // Цифровые часы. 10:55
@@ -67,10 +67,7 @@ public class RegexpHelper {
     }
 
     public static boolean isMatches(String text, Pattern pattern) {
-        if (text == null || text.isEmpty()) {
-            return false;
-        }
-        return pattern.matcher(text).matches();
+        return !(text == null || text.isEmpty()) && pattern.matcher(text).matches();
     }
 
     public static Set<String> findUniqueMatches(String text, Pattern pattern) {
