@@ -10,8 +10,9 @@ import static org.testng.Assert.*;
 
 public class RegexpHelperTests {
 
-    private static Set<String> Set(String ... args) {
-        return Stream.of(args).collect(Collectors.toSet());
+    @SafeVarargs
+    private static <T> Set<T> Set(T ... varargs) {
+        return Stream.of(varargs).collect(Collectors.toSet());
     }
 
     @DataProvider
