@@ -68,6 +68,14 @@ public class RegexpHelperTests {
                 {"DIGITAL_CLOCK", "00:60", false},
                 {"DIGITAL_CLOCK", "99:99", false},
                 {"DIGITAL_CLOCK", "19:30", true},
+                {"IP", "0.0.0.0", true},
+                {"IP", "1.1.1.1", true},
+                {"IP", "127.0.0.1", true},
+                {"IP", "255.255.255.255", true},
+                {"IP", "01.0.0.0", false},
+                {"IP", "256.0.0.0", false},
+                {"IP", "0.0.0.0.0", false},
+                {"IP", "199.199.199.99", true},
         };
     }
 
