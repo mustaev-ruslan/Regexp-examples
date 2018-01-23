@@ -53,8 +53,9 @@ public class RegexpHelper {
         // Слова с удвоенной "н"
         flagMap.put("DOUBLE_N", Pattern.UNICODE_CHARACTER_CLASS);
         strMap.put("DOUBLE_N", "\\w*нн\\w*");
-        // Русские прилагательные. -ая, -ое, -ие, -яя, ...
-        strMap.put("ADJECTIVE", "");
+        // Русские полные прилагательные. -ая, -ое, -ие, -яя, ...
+        flagMap.put("ADJECTIVE", Pattern.UNICODE_CHARACTER_CLASS);
+        strMap.put("ADJECTIVE", "\\w+(ый|ого|ому|ым|ом|ий|его|ему|им|ем|ая|ой|ую|яя|ей|юю|ое|ее|ые|ых|ым|ыми|ие|их|им|ими|юю|ин|ья)");
         // Числовое равенство. 3 + 5 = 7
         strMap.put("NUM_EQUALITY", "");
         // Телефонный номер со скобками и дефисами или без

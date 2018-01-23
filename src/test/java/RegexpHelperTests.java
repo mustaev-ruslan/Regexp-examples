@@ -97,6 +97,17 @@ public class RegexpHelperTests {
                 {"DOUBLE_N", "Инна", true},
                 {"DOUBLE_N", "очки ннада?", false},
                 {"DOUBLE_N", "ннада", true},
+                {"ADJECTIVE", "Привет", false},
+                {"ADJECTIVE", "кровь", false},
+                {"ADJECTIVE", "бельё", false},
+                {"ADJECTIVE", "клёвый", true},
+                {"ADJECTIVE", "зелёный", true},
+                {"ADJECTIVE", "индуистский", true},
+                {"ADJECTIVE", "луной", true},
+                {"ADJECTIVE", "голубой", true},
+                {"ADJECTIVE", "кривой", true},
+                {"ADJECTIVE", "кривая", true},
+                {"ADJECTIVE", "фиолетовую", true},
         };
     }
 
