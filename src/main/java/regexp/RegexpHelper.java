@@ -6,18 +6,23 @@ import java.util.regex.*;
 public class RegexpHelper {
 
     private static Map<String, String> strMap;
+    private static Map<String, Integer> flagMap;
     private static Map<String, Pattern> patternMap;
 
     static {
         strMap = new HashMap<>();
-        initStrMap();
+        flagMap = new HashMap<>();
+        initStrAndFlagMap();
         patternMap = new HashMap<>();
         for (Map.Entry<String, String> entry : strMap.entrySet()) {
-            patternMap.put(entry.getKey(), Pattern.compile(entry.getValue()));
+            Integer flag = flagMap.get(entry.getKey());
+            flag = flag != null ? flag : 0;
+            //noinspection MagicConstant
+            patternMap.put(entry.getKey(), Pattern.compile(entry.getValue(), flag));
         }
     }
 
-    private static void initStrMap() {
+    private static void initStrAndFlagMap() {
         // Почта
         strMap.put("MAIL", "[a-zA-Z]([.-]?[a-zA-`Z0-9_]+)*@[a-zA-Z]([.-]?[a-zA-Z0-9_]+)*");
         // То что может быть именем и фамилией, начинаются с большой буквы, не содержат небуквенных символов,
@@ -39,7 +44,12 @@ public class RegexpHelper {
         // Самые большие круглые скобки. Возращает только самые большие скобочные выражения. Не возвращает подскобочные скобочные выражения.
         strMap.put("BIG_BRACKETS", "");
         // Российский номер автомобиля
-        strMap.put("AUTO_NUMBER", "");
+        flagMap.put("AUTO_NUMBER", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+        strMap.put("AUTO_NUMBER", "[АВЕКМНОРСТУХABEKMHOPCTYX]" +
+                "([0-9][1-9]|[1-9][0-9])[0-9]" +
+                "[АВЕКМНОРСТУХABEKMHOPCTYX][АВЕКМНОРСТУХABEKMHOPCTYX]" +
+                "[17]?([0-9][1-9]|[1-9][0-9])" +
+                "RUS");
         // Слова с удвоенной "н"
         strMap.put("DOUBLE_N", "");
         // Русские прилагательные. -ая, -ое, -ие, -яя, ...

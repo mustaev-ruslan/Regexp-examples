@@ -76,6 +76,23 @@ public class RegexpHelperTests {
                 {"IP", "256.0.0.0", false},
                 {"IP", "0.0.0.0.0", false},
                 {"IP", "199.199.199.99", true},
+                {"AUTO_NUMBER", "С065МК78RUS", true},
+                {"AUTO_NUMBER", "C065MK78RUS", true},
+                {"AUTO_NUMBER", "с065мк78RUS", true},
+                {"AUTO_NUMBER", "c065mk78RUS", true},
+                {"AUTO_NUMBER", "A777AA02RUS", true},
+                {"AUTO_NUMBER", "X999XX799RUS", true},
+                {"AUTO_NUMBER", "С000МК78RUS", false},
+                {"AUTO_NUMBER", "С065RК78RUS", false},
+                {"AUTO_NUMBER", "Я065МК78RUS", false},
+                {"AUTO_NUMBER", "С065МК78UKR", false},
+                {"AUTO_NUMBER", "С065МК01RUS", true},
+                {"AUTO_NUMBER", "С065МК00RUS", false},
+                {"AUTO_NUMBER", "С065МК101RUS", true},
+                {"AUTO_NUMBER", "С065МК201RUS", false},
+                {"AUTO_NUMBER", "С065МК100RUS", false},
+                {"AUTO_NUMBER", "С065МК699RUS", false},
+                {"AUTO_NUMBER", "С065МК777RUS", true},
         };
     }
 
