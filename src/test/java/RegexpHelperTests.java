@@ -93,6 +93,10 @@ public class RegexpHelperTests {
                 {"AUTO_NUMBER", "С065МК100RUS", false},
                 {"AUTO_NUMBER", "С065МК699RUS", false},
                 {"AUTO_NUMBER", "С065МК777RUS", true},
+                {"DOUBLE_N", "привет", false},
+                {"DOUBLE_N", "Инна", true},
+                {"DOUBLE_N", "очки ннада?", false},
+                {"DOUBLE_N", "ннада", true},
         };
     }
 

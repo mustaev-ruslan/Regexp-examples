@@ -51,7 +51,8 @@ public class RegexpHelper {
                 "[17]?([0-9][1-9]|[1-9][0-9])" +
                 "RUS");
         // Слова с удвоенной "н"
-        strMap.put("DOUBLE_N", "");
+        flagMap.put("DOUBLE_N", Pattern.UNICODE_CHARACTER_CLASS);
+        strMap.put("DOUBLE_N", "\\w*нн\\w*");
         // Русские прилагательные. -ая, -ое, -ие, -яя, ...
         strMap.put("ADJECTIVE", "");
         // Числовое равенство. 3 + 5 = 7
