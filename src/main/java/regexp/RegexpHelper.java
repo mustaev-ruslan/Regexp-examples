@@ -38,11 +38,11 @@ public class RegexpHelper {
                 "([1-9]?[0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])." +
                 "([1-9]?[0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])");
         // Жадные круглые скобки. Возвращает любые скобочные выражения.
-        strMap.put("GREEDY_BRACKETS", "");
+        strMap.put("GREEDY_BRACKETS", ""); // TODO
         // Ленивые круглые скобки. Возвращает скобочные выражения без содержания внутри правильной скобочной последовательности.
-        strMap.put("LAZY_BRACKETS", "");
+        strMap.put("LAZY_BRACKETS", ""); // TODO
         // Самые большие круглые скобки. Возращает только самые большие скобочные выражения. Не возвращает подскобочные скобочные выражения.
-        strMap.put("BIG_BRACKETS", "");
+        strMap.put("BIG_BRACKETS", ""); // TODO
         // Российский номер автомобиля
         flagMap.put("AUTO_NUMBER", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
         strMap.put("AUTO_NUMBER", "[АВЕКМНОРСТУХABEKMHOPCTYX]" +
@@ -57,14 +57,14 @@ public class RegexpHelper {
         flagMap.put("ADJECTIVE", Pattern.UNICODE_CHARACTER_CLASS);
         strMap.put("ADJECTIVE", "\\w+(ый|ого|ому|ым|ом|ий|его|ему|им|ем|ая|ой|ую|яя|ей|юю|ое|ее|ые|ых|ым|ыми|ие|их|им|ими|юю|ин|ья)");
         // Числовое равенство. 3 + 5 = 7
-        strMap.put("NUM_EQUALITY", "");
+        strMap.put("NUM_EQUALITY", ""); // TODO
         // Телефонный номер со скобками и дефисами или без
-        strMap.put("PHONE", "");
+        strMap.put("PHONE", ""); // TODO
         // Красное или зеленое яблоко
         flagMap.put("APPLE", Pattern.UNICODE_CHARACTER_CLASS | Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
         strMap.put("APPLE", "(красное|зел[её]ное) яблоко");
         // Шестнадцатиричное число без впереди идущих нулей
-        strMap.put("HEX", "");
+        strMap.put("HEX", ""); // TODO
         // Любое натуральное число
         strMap.put("NATURAL", "\\+?[1-9]\\d*");
         // Любое целое число
@@ -76,14 +76,14 @@ public class RegexpHelper {
                 "[+-]?(0|[1-9]\\d*)[,.]\\d*[1-9]" + // С дробной частью
                 ")");
         // Кот, но не котел и не икота
-        strMap.put("CAT", "");
+        strMap.put("CAT", ""); // TODO
         // Ко...т - слово целиком
-        strMap.put("CA_T", "");
+        strMap.put("CA_T", ""); // TODO
         // Дата в любом формате
-        strMap.put("DATE", "");
+        strMap.put("DATE", ""); // TODO
         // Предложение, в котором встречается повтор одного слова(возможно в разном регистре) и вхождения этого слова
         // разделены минимум одним пробельным символом.
-        strMap.put("DOUBLE_WORD_SENTENCE", "");
+        strMap.put("DOUBLE_WORD_SENTENCE", ""); // TODO
         // Два разных символа
         strMap.put("DIFFERENT", "(.)(?!\\1).");
         // Слова вида аааббб, где кол-во а и б одинаково. а и б могут быть одинаковы
