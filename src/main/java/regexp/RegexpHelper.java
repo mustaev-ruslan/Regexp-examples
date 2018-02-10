@@ -61,7 +61,7 @@ public class RegexpHelper {
         // Телефонный номер со скобками и дефисами или без
         strMap.put("PHONE", "");
         // Красное или зеленое яблоко
-        flagMap.put("APPLE", Pattern.UNICODE_CHARACTER_CLASS);
+        flagMap.put("APPLE", Pattern.UNICODE_CHARACTER_CLASS | Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
         strMap.put("APPLE", "(красное|зел[её]ное) яблоко");
         // Шестнадцатиричное число без впереди идущих нулей
         strMap.put("HEX", "");
@@ -73,7 +73,7 @@ public class RegexpHelper {
         strMap.put("RATIO", "(" +
                 "(0|[+-]?[1-9]\\d*)" + // Целое
                 "|" +
-                "[+-](0|[1-9]\\d*)[,.]\\d*[1-9]" + // С дробной частью
+                "[+-]?(0|[1-9]\\d*)[,.]\\d*[1-9]" + // С дробной частью
                 ")");
         // Кот, но не котел и не икота
         strMap.put("CAT", "");
@@ -84,8 +84,10 @@ public class RegexpHelper {
         // Предложение, в котором встречается повтор одного слова(возможно в разном регистре) и вхождения этого слова
         // разделены минимум одним пробельным символом.
         strMap.put("DOUBLE_WORD_SENTENCE", "");
-        // Слова вида аааббб, где кол-во а и б одинаково, кол-во меньше пяти (в общем случае не разрешимо)
-        strMap.put("AAABBB", "(..|(.)\1(.)\2|(.)\1{2}(.)\2{2}|(.)\1{3}(.)\2{3}|(.)\1{4}(.)\2{4})");
+        // Два разных символа
+        strMap.put("DIFFERENT", "(.)(?!\\1).");
+        // Слова вида аааббб, где кол-во а и б одинаково. а и б могут быть одинаковы
+        strMap.put("ANBN", "(?:(?:((?!\\3).)(?=\\1*(\\2?+(.)(?=\\3|$))))+\\2|((.)\\5)\\4*)");
     }
 
     public static boolean isMatches(String text, Pattern pattern) {
