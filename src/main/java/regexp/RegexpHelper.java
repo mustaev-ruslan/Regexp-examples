@@ -1,5 +1,7 @@
 package regexp;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 import java.util.regex.*;
 
@@ -15,8 +17,7 @@ public class RegexpHelper {
         initStrAndFlagMap();
         patternMap = new HashMap<>();
         for (Map.Entry<String, String> entry : strMap.entrySet()) {
-            Integer flag = flagMap.get(entry.getKey());
-            flag = flag != null ? flag : 0;
+            Integer flag = Objects.requireNonNullElse(flagMap.get(entry.getKey()), 0);
             //noinspection MagicConstant
             patternMap.put(entry.getKey(), Pattern.compile(entry.getValue(), flag));
         }
@@ -117,7 +118,7 @@ public class RegexpHelper {
     }
 
     // Сгруппировать по три цифры в числе: -1234567890.123456789 -> -1 234 567 890.123 456 789
-    public static String groupDigits(String text) {
+    public static String groupDigits(@NotNull String text) {
         throw new UnsupportedOperationException();
     }
 

@@ -428,4 +428,28 @@ public class RegexpHelperTests {
         String actualText = RegexpHelper.groupDigits(inputText);
         assertEquals(actualText, expectedText);
     }
+
+    @Test
+    public void testClearSpaces() throws Exception {
+    }
+
+    @Test
+    public void testJavaVersionReplace() throws Exception {
+    }
+
+    @Test
+    public void testFahrenheitToCelsius() throws Exception {
+    }
+
+    @Test
+    public void testCapsToBold() throws Exception {
+    }
+
+    @Test
+    public void testDeleteWord() throws Exception {
+    }
+
+    @Test
+    public void testSplitBySpaces() throws Exception {
+    }
 }
