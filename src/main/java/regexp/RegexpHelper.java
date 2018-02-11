@@ -115,4 +115,39 @@ public class RegexpHelper {
     public static Pattern getPattern(String patternName) {
         return patternMap.get(patternName);
     }
+
+    // Сгруппировать по три цифры в числе: -1234567890.123456789 -> -1 234 567 890.123 456 789
+    public static String groupDigits(String text) {
+        throw new UnsupportedOperationException();
+    }
+
+    // Удаление концевых и внутренних лишних пробелов: "    hello    world    " -> "hello world"
+    public static String clearSpaces(String text) {
+        throw new UnsupportedOperationException();
+    }
+
+    // Заменить все вхождения Java пробел* 1./d на Java пробел /d.0
+    public static String javaVersionReplace(String text) {
+        throw new UnsupportedOperationException();
+    }
+
+    // Найти все температуры в фаренгейтах и заменить на цельсии
+    public static String fahrenheitToCelsius(String text) {
+        throw new UnsupportedOperationException();
+    }
+
+    // Заменить все капслоки на жирное начертание тегами
+    public static String capsToBold(String text) {
+        throw new UnsupportedOperationException();
+    }
+
+    // Удалить все вхождения слова из текста
+    public static String deleteWord(String text, String word) {
+        throw new UnsupportedOperationException();
+    }
+
+    // Разделить текст на слова, разделитель - пробельный символ
+    public static List<String> splitBySpaces(String text) {
+        throw new UnsupportedOperationException();
+    }
 }
