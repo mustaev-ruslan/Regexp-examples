@@ -14,6 +14,7 @@ repositories {
 }
 
 dependencies {
+    compileClasspath group: 'org.jetbrains', name: 'annotations', version: '15.0'
     testCompile group: 'org.testng', name: 'testng', version: '6.13.1'
 }
 
