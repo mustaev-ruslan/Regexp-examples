@@ -422,9 +422,9 @@ public class RegexpHelperTests {
     @Test
     public void testGroupDigits() {
         String inputText = "В этом тексте есть цифры и числа: 1, 123, 1234, 12345, 123456, 1234567, " +
-                "1234.1234, 0.1, 0.1234, -12345.12345, 12345678901234567890";
+                "1234.1234, 0.1, 0.1234, -12345.12345678, 12345678901234567890";
         String expectedText = "В этом тексте есть цифры и числа: 1, 123, 1 234, 12 345, 123 456, 1 234 567, " +
-                "1 234.123 4, 0.1, 0.123 4, -12 345.123 45, 12 345 678 901 234 567 890";
+                "1 234.123 4, 0.1, 0.123 4, -12 345.123 456 78, 12 345 678 901 234 567 890";
         String actualText = RegexpHelper.groupDigits(inputText);
         assertEquals(actualText, expectedText);
     }

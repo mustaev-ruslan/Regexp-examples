@@ -47,7 +47,7 @@ public class RegexpHelper {
         strMap.put("DOUBLE_N", "\\w*нн\\w*");
         // Русские полные прилагательные. -ая, -ое, -ие, -яя, ...
         flagMap.put("ADJECTIVE", Pattern.UNICODE_CHARACTER_CLASS);
-        strMap.put("ADJECTIVE", "\\w+(ый|ого|ому|ым|ом|ий|его|ему|им|ем|ая|ой|ую|яя|ей|юю|ое|ее|ые|ых|ым|ыми|ие|их|им|ими|юю|ин|ья)");
+        strMap.put("ADJECTIVE", "\\w+(ый|ого|ому|ым|ом|ий|его|ему|им|ем|ая|ой|ую|яя|ей|юю|ое|ее|ые|ых|ыми|ие|их|ими|ин|ья)");
         // Числовое равенство. 3+5=7
         strMap.put("NUM_EQUALITY", "-?[1-9]\\d*([+*/-][1-9]\\d*)*=-?[1-9]\\d*");
         // Телефонный номер со скобками и дефисами или без
@@ -119,7 +119,7 @@ public class RegexpHelper {
 
     // Сгруппировать по три цифры в числе: -1234567890.123456789 -> -1 234 567 890.123 456 789
     public static String groupDigits(@NotNull String text) {
-        throw new UnsupportedOperationException();
+        return text.replaceAll("((?<=\\d)(?<!\\.\\d+)(?=(\\d\\d\\d)+(?!\\d))|(?<=\\.(\\d\\d\\d)+)(?=\\d))", " ");
     }
 
     // Удаление концевых и внутренних лишних пробелов: "    hello    world    " -> "hello world"
