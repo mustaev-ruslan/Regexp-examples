@@ -1,4 +1,4 @@
-package regexp;
+package com.aaxee.regexp;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
