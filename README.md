@@ -7,4 +7,4 @@ Project contains 29 regexps and 293 tests of any types.
 
 Tests used TestNG.
 
-Project builds with Gradle. 
+Project builds with Gradle.
