@@ -451,6 +451,10 @@ public class RegexpHelperTests {
 
     @Test
     public void testFahrenheitToCelsius() throws Exception {
+        String inputText = "Temperatures: -0.35F, -999999999 F, 0 °F, +5°F, 1.10101 °F, -2,1F";
+        String expectedText = "Temperatures: -17.97C, -555555572.78 C, -17.78 °C, -15°C, -17.17 °C, -18,94C";
+        String actualText = RegexpHelper.fahrenheitToCelsius(inputText);
+        assertEquals(actualText, expectedText);
     }
 
     @Test

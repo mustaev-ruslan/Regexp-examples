@@ -2,6 +2,10 @@ package regexp;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
 import java.util.*;
 import java.util.regex.*;
 
@@ -136,8 +140,41 @@ public class RegexpHelper {
     }
 
     // Найти все температуры в фаренгейтах и заменить на цельсии
-    public static String fahrenheitToCelsius(String text) {
-        throw new UnsupportedOperationException();
+    public static String fahrenheitToCelsius(@NotNull String text) {
+        Pattern pattern = Pattern.compile("([+-]?\\d+(?:([,.])\\d+)?)(\\s?°?)F");
+        Matcher matcher = pattern.matcher(text);
+        StringBuilder sb = new StringBuilder();
+        while (matcher.find()) {
+            char separator = Objects.requireNonNullElse(matcher.group(2), ".").charAt(0);
+            try {
+                matcher.appendReplacement(sb, stringFToC(matcher.group(1), separator) + matcher.group(3) + "C");
+            } catch (ParseException e) {
+                // If cannot parse (that is not possible) append source text
+                matcher.appendReplacement(sb, matcher.group());
+            }
+        }
+        matcher.appendTail(sb);
+        return sb.toString();
+    }
+
+    private static String stringFToC(@NotNull String number, char separator) throws ParseException {
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        symbols.setDecimalSeparator(separator);
+
+        DecimalFormat inFormat = new DecimalFormat();
+        inFormat.setDecimalFormatSymbols(symbols);
+
+        DecimalFormat outFormat = new DecimalFormat();
+        outFormat.setMaximumFractionDigits(2);
+        outFormat.setDecimalFormatSymbols(symbols);
+        outFormat.setRoundingMode(RoundingMode.HALF_UP);
+        outFormat.setGroupingUsed(false);
+
+        return outFormat.format(FToC(inFormat.parse(number.replace("+", "")).doubleValue()));
+    }
+
+    private static Double FToC(@NotNull Double fahrenheit) {
+        return (5.0 / 9.0) * (fahrenheit - 32.0);
     }
 
     // Заменить все капслоки на жирное начертание тегами
