@@ -431,6 +431,10 @@ public class RegexpHelperTests {
 
     @Test
     public void testClearSpaces() throws Exception {
+        String inputText = "             Тестовый текст        абвг абвг       гджз     ";
+        String expectedText = "Тестовый текст абвг абвг гджз";
+        String actualText = RegexpHelper.clearSpaces(inputText);
+        assertEquals(actualText, expectedText);
     }
 
     @Test

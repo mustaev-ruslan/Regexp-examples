@@ -123,8 +123,11 @@ public class RegexpHelper {
     }
 
     // Удаление концевых и внутренних лишних пробелов: "    hello    world    " -> "hello world"
-    public static String clearSpaces(String text) {
-        throw new UnsupportedOperationException();
+    public static String clearSpaces(@NotNull String text) {
+        return text
+                .replaceAll("^\\s+", "")
+                .replaceAll("\\s+$", "")
+                .replaceAll("\\s+", " ");
     }
 
     // Заменить все вхождения Java пробел* 1./d на Java пробел /d.0
