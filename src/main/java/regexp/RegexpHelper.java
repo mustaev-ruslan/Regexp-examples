@@ -199,7 +199,11 @@ public class RegexpHelper {
     }
 
     // Разделить текст на слова, разделитель - пробельный символ
-    public static List<String> splitBySpaces(String text) {
-        throw new UnsupportedOperationException();
+    public static List<String> splitBySpaces(@NotNull String text) {
+        String[] strings = text.split(" ");
+        if (strings.length == 1 && strings[0].isEmpty()) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(strings);
     }
 }

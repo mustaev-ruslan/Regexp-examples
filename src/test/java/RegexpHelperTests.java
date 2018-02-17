@@ -476,6 +476,7 @@ public class RegexpHelperTests {
         assertEquals(actualText, expectedText);
     }
 
+    @Ignore
     @Test
     public void testDeleteWord() throws Exception {
         String inputText = "deleteMe Hi deleteMe! deleteMe deleteMe in my world. This deleteMe is great!deleteMe deleteMe. deleteMel. deleteMe";
@@ -485,6 +486,7 @@ public class RegexpHelperTests {
         assertEquals(actualText, expectedText);
     }
 
+    @Ignore
     @Test
     public void testDeleteNullWord() throws Exception {
         String inputText = "deleteMe Hi deleteMe! deleteMe deleteMe in my world. This deleteMe is great!deleteMe deleteMe";
@@ -493,8 +495,24 @@ public class RegexpHelperTests {
         assertEquals(actualText, expectedText);
     }
 
-    @Ignore
     @Test
     public void testSplitBySpaces() throws Exception {
+        String inputText = "Hello! My name is Ruslan. This is splitBySpaces test.";
+        List<String> expectedList = Arrays.asList("Hello!", "My", "name", "is", "Ruslan.", "This", "is", "splitBySpaces", "test.");
+        List<String> actualList = RegexpHelper.splitBySpaces(inputText);
+        assertEquals(expectedList, actualList);
+    }
+
+    @Test(expectedExceptions = NullPointerException.class)
+    public void testSplitBySpacesNull() throws Exception {
+        RegexpHelper.splitBySpaces(null);
+    }
+
+    @Test
+    public void testSplitBySpacesEmpty() throws Exception {
+        String inputText = "";
+        List expectedList = Collections.EMPTY_LIST;
+        List<String> actualList = RegexpHelper.splitBySpaces(inputText);
+        assertEquals(expectedList, actualList);
     }
 }
