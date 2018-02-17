@@ -419,6 +419,7 @@ public class RegexpHelperTests {
         assertEquals(actualSet, expectedSet, "text: " + text);
     }
 
+    @Ignore
     @Test
     public void testGroupDigits() {
         String inputText = "В этом тексте есть цифры и числа: 1, 123, 1234, 12345, 123456, 1234567, " +
@@ -429,6 +430,7 @@ public class RegexpHelperTests {
         assertEquals(actualText, expectedText);
     }
 
+    @Ignore
     @Test
     public void testClearSpaces() throws Exception {
         String inputText = "             Тестовый текст        абвг абвг       гджз     ";
@@ -437,6 +439,7 @@ public class RegexpHelperTests {
         assertEquals(actualText, expectedText);
     }
 
+    @Ignore
     @Test
     public void testJavaVersionReplace() throws Exception {
         String inputText = "Версии Java, которые устарели: " +
@@ -449,6 +452,7 @@ public class RegexpHelperTests {
         assertEquals(actualText, expectedText);
     }
 
+    @Ignore
     @Test
     public void testFahrenheitToCelsius() throws Exception {
         String inputText = "Temperatures: -0.35F, -999999999 F, 0 °F, +5°F, 1.10101 °F, -2,1F";
@@ -459,12 +463,24 @@ public class RegexpHelperTests {
 
     @Test
     public void testCapsToBold() throws Exception {
+        String inputText = "This is MAIN article. " +
+                "It is so cOOl, but thIs is just example. " +
+                "My name is Ruslan. " +
+                "THis is another EXample.";
+        String expectedText = "This is <b>main</b> article. " +
+                "It is so c<b>oo</b>l, but th<b>i</b>s is just example. " +
+                "My name is Ruslan. " +
+                "T<b>h</b>is is another <b>ex</b>ample.";
+        String actualText = RegexpHelper.capsToBold(inputText);
+        assertEquals(actualText, expectedText);
     }
 
+    @Ignore
     @Test
     public void testDeleteWord() throws Exception {
     }
 
+    @Ignore
     @Test
     public void testSplitBySpaces() throws Exception {
     }

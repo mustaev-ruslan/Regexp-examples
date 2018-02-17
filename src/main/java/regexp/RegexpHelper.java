@@ -178,8 +178,15 @@ public class RegexpHelper {
     }
 
     // Заменить все капслоки на жирное начертание тегами
-    public static String capsToBold(String text) {
-        throw new UnsupportedOperationException();
+    public static String capsToBold(@NotNull String text) {
+        Pattern pattern = Pattern.compile("(?<!(?:\\.\\s|^))(?!(?<=\\s)[A-Z][a-z])[A-Z]+");
+        Matcher matcher = pattern.matcher(text);
+        StringBuilder sb = new StringBuilder();
+        while (matcher.find()) {
+            matcher.appendReplacement(sb, "<b>" + matcher.group().toLowerCase() + "</b>");
+        }
+        matcher.appendTail(sb);
+        return sb.toString();
     }
 
     // Удалить все вхождения слова из текста
