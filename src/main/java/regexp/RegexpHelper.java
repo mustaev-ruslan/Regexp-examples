@@ -1,6 +1,7 @@
 package regexp;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -190,8 +191,11 @@ public class RegexpHelper {
     }
 
     // Удалить все вхождения слова из текста
-    public static String deleteWord(String text, String word) {
-        throw new UnsupportedOperationException();
+    public static String deleteWord(@NotNull String text, @Nullable String word) {
+        if (word == null) {
+            return text;
+        }
+        return text.replaceAll("(\\s" + word + "(?!\\w)|(?<!\\w)" + word + "\\s|(?<!\\w)" + word +"(?!\\w))", "");
     }
 
     // Разделить текст на слова, разделитель - пробельный символ

@@ -461,6 +461,7 @@ public class RegexpHelperTests {
         assertEquals(actualText, expectedText);
     }
 
+    @Ignore
     @Test
     public void testCapsToBold() throws Exception {
         String inputText = "This is MAIN article. " +
@@ -475,9 +476,21 @@ public class RegexpHelperTests {
         assertEquals(actualText, expectedText);
     }
 
-    @Ignore
     @Test
     public void testDeleteWord() throws Exception {
+        String inputText = "deleteMe Hi deleteMe! deleteMe deleteMe in my world. This deleteMe is great!deleteMe deleteMe. deleteMel. deleteMe";
+        String deleteWord = "deleteMe";
+        String expectedText = "Hi! in my world. This is great!. deleteMel.";
+        String actualText = RegexpHelper.deleteWord(inputText, deleteWord);
+        assertEquals(actualText, expectedText);
+    }
+
+    @Test
+    public void testDeleteNullWord() throws Exception {
+        String inputText = "deleteMe Hi deleteMe! deleteMe deleteMe in my world. This deleteMe is great!deleteMe deleteMe";
+        String expectedText = "deleteMe Hi deleteMe! deleteMe deleteMe in my world. This deleteMe is great!deleteMe deleteMe";
+        String actualText = RegexpHelper.deleteWord(inputText, null);
+        assertEquals(actualText, expectedText);
     }
 
     @Ignore
