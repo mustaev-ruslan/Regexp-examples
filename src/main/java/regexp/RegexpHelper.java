@@ -130,9 +130,9 @@ public class RegexpHelper {
                 .replaceAll("\\s+", " ");
     }
 
-    // Заменить все вхождения Java пробел* 1./d на Java пробел /d.0
-    public static String javaVersionReplace(String text) {
-        throw new UnsupportedOperationException();
+    // Заменить все вхождения Java пробел* 1./d на Java пробел /d.0, кроме 1.0 и 1.1
+    public static String javaVersionReplace(@NotNull String text) {
+        return text.replaceAll("Java 1\\.([2-9])(?!\\d)", "Java $1.0");
     }
 
     // Найти все температуры в фаренгейтах и заменить на цельсии

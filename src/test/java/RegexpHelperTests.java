@@ -439,6 +439,14 @@ public class RegexpHelperTests {
 
     @Test
     public void testJavaVersionReplace() throws Exception {
+        String inputText = "Версии Java, которые устарели: " +
+                "Java 1.0, Java 1.1, Java 1.2, Java 1.3, Java 1.4, Java 5.0, Java 6.0. " +
+                "Версии, которые не существуют: Java 1.55, Java 2.5, Java 11.3.";
+        String expectedText = "Версии Java, которые устарели: " +
+                "Java 1.0, Java 1.1, Java 2.0, Java 3.0, Java 4.0, Java 5.0, Java 6.0. " +
+                "Версии, которые не существуют: Java 1.55, Java 2.5, Java 11.3.";
+        String actualText = RegexpHelper.javaVersionReplace(inputText);
+        assertEquals(actualText, expectedText);
     }
 
     @Test
